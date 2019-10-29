@@ -1,9 +1,8 @@
-//
-// Created by carlos on 29/10/19.
-//
-
 #ifndef TIENDA_INTERPRETE_H
 #define TIENDA_INTERPRETE_H
+
+#include <iostream>
+using namespace std;
 
 void procesar_insertar();
 void procesar_palabras();

@@ -1,6 +1,9 @@
 #ifndef TIENDA_PRODUCTO_H
 #define TIENDA_PRODUCTO_H
 
+#include <iostream>
+using namespace std;
+
 class Producto
 {
 private:
@@ -11,7 +14,7 @@ public:
     Producto();
     void leer();
     void mostrar();
-    // bool es_anterior(Producto &otro); //
+    // bool es_anterior(Producto &otro); // TODO cosas
     ~Producto();
 };
 

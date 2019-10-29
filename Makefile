@@ -1,4 +1,4 @@
-# BOSS MODE
+# BOSS MODE #
 CC = g++
 CFLAGS = -std=c++11 -Wall -Wno-deprecated -O2
 TARGET = a.out
@@ -16,4 +16,4 @@ Producto.o: Producto.cpp Producto.h
 	$(CC) $(CFLAGS) -c Producto.cpp
 
 Interprete.o: Interprete.cpp Interprete.h
-	$(CC) $(CFLAGS) -c Inteprete.cpp
+	$(CC) $(CFLAGS) -c Interprete.cpp

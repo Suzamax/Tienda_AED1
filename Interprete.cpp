@@ -1,12 +1,10 @@
-//
-// Created by carlos on 29/10/19.
-//
-
 #include "Interprete.h"
+
+// TODO Apañar esto con la nueva información
 
 void procesar_insertar()
 {
-    p.leer();
+    p.leer(); // TODO Qué es P? Dónde se declara? Obviamente habrá que pasar el objeto...
     cout << ++i << " productos" << endl;
 }
 

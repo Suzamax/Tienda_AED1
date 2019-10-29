@@ -9,7 +9,20 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d93f2da-ad9f-4380-88a3-fde87f551025" name="Default Changelist" comment="" />
+    <list default="true" id="8d93f2da-ad9f-4380-88a3-fde87f551025" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diccionario.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Producto.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diccionario.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Diccionario.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diccionario.h" beforeDir="false" afterPath="$PROJECT_DIR$/Diccionario.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interprete.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Interprete.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interprete.h" beforeDir="false" afterPath="$PROJECT_DIR$/Interprete.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Producto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Producto.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Producto.h" beforeDir="false" afterPath="$PROJECT_DIR$/Producto.h" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +32,13 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1SY4z1RDL2H2C9nQMKdjNWAe1sq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -42,6 +60,47 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Makefile.all (5)">
+    <configuration name="all (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="all (2)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="all (3)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="all (4)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="all (5)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Makefile.all (5)" />
+        <item itemvalue="Makefile.all (4)" />
+        <item itemvalue="Makefile.all (3)" />
+        <item itemvalue="Makefile.all (2)" />
+        <item itemvalue="Makefile.all (1)" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -56,10 +115,22 @@
       <workItem from="1571750893060" duration="33000" />
       <workItem from="1572333513245" duration="89000" />
       <workItem from="1572333614365" duration="2380000" />
+      <workItem from="1572368840307" duration="703000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

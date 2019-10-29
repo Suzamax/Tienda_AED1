@@ -1,0 +1,4 @@
+# IGNORAR!
+cmake-build-debug/
+
+*.o

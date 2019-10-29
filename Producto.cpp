@@ -1,7 +1,3 @@
-//
-// Created by carlos on 29/10/19.
-//
-
 #include "Producto.h"
 
 Producto::Producto() {}
