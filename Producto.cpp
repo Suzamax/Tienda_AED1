@@ -18,3 +18,8 @@ void Producto::mostrar()
     cout << "  " << descripcion << endl;
     cout << "  " << precio << " euros" << endl;
 }
+
+unsigned long int Producto::getIdentificador()
+{
+    return identificador;
+}

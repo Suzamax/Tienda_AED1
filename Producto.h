@@ -14,6 +14,8 @@ public:
     Producto();
     void leer();
     void mostrar();
+    unsigned long int getIdentificador();
+
     // bool es_anterior(Producto &otro); // TODO cosas
     ~Producto();
 };
