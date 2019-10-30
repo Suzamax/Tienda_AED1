@@ -1,13 +1,60 @@
 #include "Interprete.h"
 
-// TODO Apañar esto con la nueva información
-
-void procesar_insertar()
+Interprete::Interprete()
 {
-    p.leer(); // TODO Qué es P? Dónde se declara? Obviamente habrá que pasar el objeto...
-    cout << ++i << " productos" << endl; // TODO Qué es i?
 }
 
+Interprete::~Interprete()
+{
+}
+
+void Interprete::obtener_comando(string cmd, DiccionarioProductos *dp)
+{
+    if (cmd == "insertar") Interprete::procesar_insertar(dp);
+    //if (cmd == "palabras") Interprete::procesar_palabras();
+    if (cmd == "precios")  Interprete::procesar_precios();
+    if (cmd == "eliminar") Interprete::procesar_eliminar();
+    if (cmd == "producto") Interprete::procesar_producto();
+}
+
+
+void Interprete::procesar_insertar(DiccionarioProductos *dp)
+{
+    Producto p;
+    p.leer();
+    dp->insertar(p);
+    
+}
+
+void Interprete::procesar_precios()
+{
+    float min, max;
+    cin >> min;
+    cin >> max;
+    cin.ignore(20, '\n');
+    // ITERAR
+}
+
+//void Interprete::procesar_palabras(DiccionarioProductos *dp) {}
+
+void Interprete::procesar_producto()
+{
+    unsigned long int id;
+    cin >> id;
+    // ITERAR (encontrar el producto que coincida en ID)
+    // MOSTRAR
+}
+
+void Interprete::procesar_eliminar()
+{
+    unsigned long int id;
+    cin >> id;
+
+    // ITERAR
+    // BORRAR DEL DP
+}
+
+/*
 void procesar_palabras()
 {
     string palabras;
@@ -42,11 +89,4 @@ void procesar_producto()
     cout << "Total: 1 producto" << endl;
 }
 
-void Interprete (string cmd)
-{
-    if (cmd == "insertar") procesar_insertar();
-    if (cmd == "palabras") procesar_palabras();
-    if (cmd == "precios")  procesar_precios();
-    if (cmd == "eliminar") procesar_eliminar();
-    if (cmd == "producto") procesar_producto();
-}
+*/

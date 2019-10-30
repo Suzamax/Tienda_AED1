@@ -1,13 +1,16 @@
 #include <iostream>
 #include <list>
-#include "Producto.cpp"
-#include "Interprete.cpp"
-#include "Diccionario.cpp"
+#include "Producto.h"
+#include "Interprete.h"
+#include "Diccionario.h"
 
 using namespace std;
 
 int main()
 {
+    DiccionarioProductos DP;
     string cmd;
-    while (cin >> cmd) Interprete(cmd);
+    Interprete shell;
+    while (cin >> cmd) shell.obtener_comando(cmd, &DP);
+
 }

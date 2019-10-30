@@ -15,8 +15,12 @@ public:
     DiccionarioProductos();
     ~DiccionarioProductos();
     void insertar (Producto nuevo);
-    // TODO Muchas cosas
-    
+    void eliminar (unsigned long int id);
+    void producto (unsigned long int id);
+    void precios (double min, double max);
+    int getContador() {
+        return contador;
+    };
 };
 
 #endif //TIENDA_DICCIONARIO_H
