@@ -1,3 +1,4 @@
 #include "Diccionario.h"
 
-// TODO Muchas cosas.
+DiccionarioProductos::DiccionarioProductos() {};
+DiccionarioProductos::~DiccionarioProductos() {};

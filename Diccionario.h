@@ -4,7 +4,6 @@
 #include <iostream>
 #include <list>
 #include "Producto.h"
-
 using namespace std;
 
 class DiccionarioProductos
@@ -13,9 +12,11 @@ private:
     list<Producto> lista;
     int contador;
 public:
-    DiccionarioProductos ();
+    DiccionarioProductos();
+    ~DiccionarioProductos();
     void insertar (Producto nuevo);
     // TODO Muchas cosas
+    
 };
 
 #endif //TIENDA_DICCIONARIO_H
