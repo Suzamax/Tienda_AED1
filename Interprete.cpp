@@ -5,7 +5,7 @@
 void procesar_insertar()
 {
     p.leer(); // TODO Qué es P? Dónde se declara? Obviamente habrá que pasar el objeto...
-    cout << ++i << " productos" << endl;
+    cout << ++i << " productos" << endl; // TODO Qué es i?
 }
 
 void procesar_palabras()
