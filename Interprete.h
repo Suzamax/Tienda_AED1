@@ -8,11 +8,13 @@ using namespace std;
 
 class Interprete
 {
+    private:
+        DiccionarioProductos *dp;
     public:
-        Interprete();
+        Interprete(DiccionarioProductos *dic);
         ~Interprete();
-        void obtener_comando(string c, DiccionarioProductos *dp);
-        void procesar_insertar(DiccionarioProductos *dp);
+        void obtener_comando(string c);
+        void procesar_insertar();
         //void procesar_palabras();
         void procesar_precios();
         void procesar_eliminar();

@@ -8,9 +8,11 @@ using namespace std;
 
 int main()
 {
-    DiccionarioProductos DP;
+    DiccionarioProductos *DP = new DiccionarioProductos();
     string cmd;
-    Interprete shell;
-    while (cin >> cmd) shell.obtener_comando(cmd, &DP);
+    Interprete *shell = new Interprete(DP);
+    while (cin >> cmd) shell->obtener_comando(cmd);
+
+    delete shell;
 
 }

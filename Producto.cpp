@@ -5,7 +5,7 @@ Producto::~Producto() {}
 
 void Producto::leer()
 {
-    cin >> identificador;
+    cin >> id;
     cin.ignore(20, '\n');
     getline(cin, nombre);
     getline(cin, descripcion);
@@ -14,12 +14,7 @@ void Producto::leer()
 
 void Producto::mostrar()
 {
-    cout << nombre << " (" << identificador << ")" << endl;
+    cout << nombre << " (" << id << ")" << endl;
     cout << "  " << descripcion << endl;
     cout << "  " << precio << " euros" << endl;
-}
-
-unsigned long int Producto::getIdentificador()
-{
-    return identificador;
 }

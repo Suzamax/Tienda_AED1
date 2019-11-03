@@ -1,16 +1,17 @@
 #include "Interprete.h"
 
-Interprete::Interprete()
+Interprete::Interprete(DiccionarioProductos *dic)
 {
+    dp = dic;
 }
 
 Interprete::~Interprete()
 {
 }
 
-void Interprete::obtener_comando(string cmd, DiccionarioProductos *dp)
+void Interprete::obtener_comando(string cmd)
 {
-    if (cmd == "insertar") Interprete::procesar_insertar(dp);
+    if (cmd == "insertar") Interprete::procesar_insertar();
     //if (cmd == "palabras") Interprete::procesar_palabras();
     if (cmd == "precios")  Interprete::procesar_precios();
     if (cmd == "eliminar") Interprete::procesar_eliminar();
@@ -18,7 +19,7 @@ void Interprete::obtener_comando(string cmd, DiccionarioProductos *dp)
 }
 
 
-void Interprete::procesar_insertar(DiccionarioProductos *dp)
+void Interprete::procesar_insertar()
 {
     Producto p;
     p.leer();
@@ -28,30 +29,27 @@ void Interprete::procesar_insertar(DiccionarioProductos *dp)
 
 void Interprete::procesar_precios()
 {
-    float min, max;
+    double min, max;
     cin >> min;
     cin >> max;
     cin.ignore(20, '\n');
-    // ITERAR
+    dp->precios(min, max);
 }
 
-//void Interprete::procesar_palabras(DiccionarioProductos *dp) {}
+//void Interprete::procesar_palabras() {}
 
 void Interprete::procesar_producto()
 {
     unsigned long int id;
     cin >> id;
-    // ITERAR (encontrar el producto que coincida en ID)
-    // MOSTRAR
+    dp->producto(id);
 }
 
 void Interprete::procesar_eliminar()
 {
     unsigned long int id;
     cin >> id;
-
-    // ITERAR
-    // BORRAR DEL DP
+    dp->eliminar(id);
 }
 
 /*

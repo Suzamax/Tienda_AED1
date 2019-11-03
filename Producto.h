@@ -7,15 +7,22 @@ using namespace std;
 class Producto
 {
 private:
-    unsigned long int identificador;
+    unsigned long int id;
     string nombre, descripcion;
-    float precio;
+    double precio;
 public:
     Producto();
     void leer();
     void mostrar();
-    unsigned long int getIdentificador();
-
+    unsigned long int getID() {
+        return id;
+    };
+    unsigned long int getID() const {
+        return id;
+    };
+    double getPrecio() {
+        return precio;
+    }
     // bool es_anterior(Producto &otro); // TODO cosas
     ~Producto();
 };
