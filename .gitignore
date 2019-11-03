@@ -6,5 +6,5 @@ cmake-build-debug/*
 .idea/workspace.xml
 *.in
 *.out
-
+salida
 .vscode/*
