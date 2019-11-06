@@ -6,6 +6,9 @@ DiccionarioProductos::~DiccionarioProductos() {};
 
 void DiccionarioProductos::insertar(Producto p) {
     lista.push_front(p);
+    // Obtener palabras del producto dado
+    Producto *p2 = &lista.front();
+    // ! TODO
     contador++;
     lista.sort([] (const Producto & a, const Producto & b) { 
         return (a.getID() < b.getID());

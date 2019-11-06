@@ -9,6 +9,9 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS)
 
+TablaHash.o: TablaHash.cpp TablaHash.h
+	$(CC) $(CFLAGS) -c TablaHash.cpp
+
 Diccionario.o: Diccionario.cpp Diccionario.h
 	$(CC) $(CFLAGS) -c Diccionario.cpp
 
