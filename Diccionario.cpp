@@ -9,6 +9,7 @@ void DiccionarioProductos::insertar(Producto p) {
     // Obtener palabras del producto dado
     Producto *p2 = &lista.front();
     // ! TODO
+    // tabla.push
     contador++;
     lista.sort([] (const Producto & a, const Producto & b) { 
         return (a.getID() < b.getID());

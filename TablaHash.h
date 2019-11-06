@@ -9,8 +9,10 @@ class TablaHash
 {
     friend class DiccionarioProductos;
     private:
-        // Palabras
-        
+        // Tamaño de la tabla INICIAL
+        static const int M = 512;
+        // Palabras. Tamaño fijo de la tabla, redistribuible.
+        list<Par<Producto*> > pares[M];
         int nE; // nº elementos
     public:
         TablaHash();

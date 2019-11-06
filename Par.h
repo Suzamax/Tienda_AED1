@@ -3,12 +3,14 @@
 
 #include "Producto.h"
 
+template <class T>
 class Par
 {
 private:
-    /* data */
+    string w;
+    list<T*> l;
 public:
-    Par(/* args */);
+    Par(string w, T* obj);
     ~Par();
 };
 

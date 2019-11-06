@@ -1,11 +1,14 @@
 #include "Par.h"
 
 
-
-Par::Par(/* args */)
+template <class T>
+Par<T>::Par(string w, T* obj)
 {
+    
 }
 
-Par::~Par()
+template <class T>
+Par<T>::~Par()
 {
+    // jeje xd
 }
