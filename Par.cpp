@@ -2,7 +2,7 @@
 
 
 template <class T>
-Par<T>::Par(string w, T* obj)
+Par<T>::Par(string w, T obj)
 {
     
 }

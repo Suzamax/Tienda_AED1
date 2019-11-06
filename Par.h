@@ -8,9 +8,9 @@ class Par
 {
 private:
     string w;
-    list<T*> l;
+    list<T> l;
 public:
-    Par(string w, T* obj);
+    Par(string w, T obj);
     ~Par();
 };
 
