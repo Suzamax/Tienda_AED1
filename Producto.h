@@ -4,6 +4,10 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @brief Clase para almacenar un producto.
+ * 
+ */
 class Producto
 {
 private:

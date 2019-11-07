@@ -10,16 +10,17 @@ class TablaHash
     friend class DiccionarioProductos;
     private:
         // Tamaño de la tabla INICIAL
-        static const int M = 512;
+        int max = 512;
         // Palabras. Tamaño fijo de la tabla, redistribuible.
-        list<Par<Producto*> > pares[M];
+        list<Par<Producto*> > pares[];
         int nE; // nº elementos
     public:
         TablaHash();
         ~TablaHash();
-        void insertar(string w, Producto *nuevo);
-        void consultar(string w);
+        void insertar(string w, Producto *nuevo); // Insertar un nuevo par
+        void consultar(string w); // Consultar palabra
         int numElem(void) { return nE; }
+        void reestructurar();
 };
 
 #endif //TIENDA_TABLAHASH_H

@@ -1,14 +1,31 @@
 #include "Interprete.h"
 
+// Para simplificar, llamaré método a las funciones y procedimientos que alberga la clase.
+
+/**
+ * @brief Construye un nuevo intérprete.
+ * 
+ * @param dic Diccionario de productos en el cual se van a almacenar los productos.
+ */
 Interprete::Interprete(DiccionarioProductos *dic)
 {
     dp = dic;
 }
 
+/**
+ * @brief Destruye el intérprete.
+ * 
+ */
 Interprete::~Interprete()
 {
+    //
 }
 
+/**
+ * @brief Este método obtiene cada comando que procesará otro método de este intérprete.
+ * 
+ * @param cmd Un comando, siendo estos: insertar, palabras, precios, eliminar y producto.
+ */
 void Interprete::obtener_comando(string cmd)
 {
     if (cmd == "insertar") Interprete::procesar_insertar();
@@ -18,7 +35,10 @@ void Interprete::obtener_comando(string cmd)
     if (cmd == "producto") Interprete::procesar_producto();
 }
 
-
+/**
+ * @brief Este método lee "insertar" y a continuación inserta el producto leído en el diccionario.
+ * 
+ */
 void Interprete::procesar_insertar()
 {
     Producto p;
@@ -27,6 +47,10 @@ void Interprete::procesar_insertar()
     
 }
 
+/**
+ * @brief Obtiene dos precios y evalúa en el diccionario qué productos se incluyen entre el mínimo y máximo.
+ * 
+ */
 void Interprete::procesar_precios()
 {
     double min, max;
@@ -38,6 +62,11 @@ void Interprete::procesar_precios()
 
 //void Interprete::procesar_palabras() {}
 
+
+/**
+ * @brief Muestra un producto especificado por el identificador dado.
+ * 
+ */
 void Interprete::procesar_producto()
 {
     unsigned long int id;
@@ -45,46 +74,13 @@ void Interprete::procesar_producto()
     dp->producto(id);
 }
 
+/**
+ * @brief Destruye el producto especificado por el identificador dado.
+ * 
+ */
 void Interprete::procesar_eliminar()
 {
     unsigned long int id;
     cin >> id;
     dp->eliminar(id);
 }
-
-/*
-void procesar_palabras()
-{
-    string palabras;
-    getline(cin, palabras);
-    cout << "palabras" << palabras << endl << "1. ";
-    p.mostrar();
-    cout << "Total: 1 producto" << endl;
-}
-
-void procesar_precios()
-{
-    float max, min;
-    cin >> min;
-    cin >> max;
-    cin.ignore(20, '\n');
-    cout << "precios " << min << " " << max << endl << "1. ";
-    p.mostrar();
-    cout << "Total: 1 producto" << endl;
-}
-
-void procesar_eliminar()
-{
-    cout << --i << " productos" << endl;
-}
-
-void procesar_producto()
-{
-    unsigned long int id;
-    cin >> id;
-    cout << "producto " << id << endl << "1. ";
-    p.mostrar();
-    cout << "Total: 1 producto" << endl;
-}
-
-*/
