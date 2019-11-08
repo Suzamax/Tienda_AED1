@@ -2,6 +2,7 @@
 #define TIENDA_TABLAHASH_H
 
 #include <iostream>
+#include <array>
 #include "Par.h"
 using namespace std;
 
@@ -9,10 +10,10 @@ class TablaHash
 {
     friend class DiccionarioProductos;
     private:
-        // Tamaño de la tabla INICIAL
-        int max = 512;
+        // Tamaño de la tabla
+        int max;
         // Palabras. Tamaño fijo de la tabla, redistribuible.
-        list<Par<Producto*> > pares[];
+        list<Par<Producto*> > *T;
         int nE; // nº elementos
     public:
         TablaHash();

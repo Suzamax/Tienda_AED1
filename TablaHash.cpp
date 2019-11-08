@@ -4,6 +4,18 @@ using namespace std;
 
 // ! COSAS
 
+TablaHash::TablaHash()
+{
+    max = 0xFFF;
+    nE = 0;
+    T = new list<Par<Producto*> >[max];
+}
+
+TablaHash::~TablaHash()
+{
+    delete T;
+}
+
 /**
  * @brief Este método sirve para insertar según un hashing un par palabra-producto.
  * 
@@ -18,7 +30,7 @@ void TablaHash::insertar(string w, Producto *nuevo)
 
     // ! while(loops != pares.end() && loops->get() != w) loops++;
     // Si no, creamos el nuevo par
-    // ! else pares.push_front()
+    // ! else pares[]
 }
 
 /**
@@ -29,4 +41,14 @@ void TablaHash::insertar(string w, Producto *nuevo)
 void TablaHash::consultar(string w)
 {
     
+}
+
+void TablaHash::reestructurar()
+{
+    if (nE > 1.95 * max)
+    {
+        // TODO:
+        // ! aumentar max en un 33%
+        // ! Volver a hacer hash de cada elemento
+    }
 }

@@ -71,14 +71,10 @@ void DiccionarioProductos::precios(double min, double max)
 {
     cout << "precios " << min << " " << max << endl;
     int items = 0;
+    
+    list<Producto>::iterator loops = lista.begin();
 
-    list<Producto> listaOrd = lista;
-    listaOrd.sort([] (const Producto & a, const Producto & b) { 
-        return (a.getID() < b.getID());
-    });
-    list<Producto>::iterator loops = listaOrd.begin();
-
-    while(loops != listaOrd.end())
+    while(loops != lista.end())
     {
         
         if (loops->getPrecio() >= min && loops->getPrecio() <= max)
