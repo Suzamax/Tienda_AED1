@@ -9,8 +9,8 @@
 class Hash
 {
 private:
-    static int FNVprimo = 0x01000193;
-    static int FNVoffset = 0x811c9dc5;
+    static const int FNVprimo = 0x01000193;
+    static const int FNVoffset = 0x811c9dc5;
 public:
     static int CalcHash(std::string w, int size);
 };
