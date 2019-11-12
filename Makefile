@@ -1,25 +1,26 @@
 # BOSS MODE #
 CC = g++
 CFLAGS = -std=c++11 -Wall -Wno-deprecated -O2
+INCLUDE = -I./headers
 TARGET = a.out
 OBJECTS = Diccionario.o Producto.o Interprete.o TablaHash.o Par.o main.o
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS)
+	$(CC) $(INCLUDE) $(CFLAGS) $(OBJECTS)
 
-Par.o: Par.cpp Par.h
-	$(CC) $(CFLAGS) -c Par.cpp
+Par.o: src/Par.cpp headers/Par.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Par.cpp
 
-TablaHash.o: TablaHash.cpp TablaHash.h
-	$(CC) $(CFLAGS) -c TablaHash.cpp
+TablaHash.o: src/TablaHash.cpp headers/TablaHash.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/TablaHash.cpp
 
-Diccionario.o: Diccionario.cpp Diccionario.h
-	$(CC) $(CFLAGS) -c Diccionario.cpp
+Diccionario.o: src/Diccionario.cpp headers/Diccionario.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Diccionario.cpp
 
-Producto.o: Producto.cpp Producto.h
-	$(CC) $(CFLAGS) -c Producto.cpp
+Producto.o: src/Producto.cpp headers/Producto.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Producto.cpp
 
-Interprete.o: Interprete.cpp Interprete.h
-	$(CC) $(CFLAGS) -c Interprete.cpp
+Interprete.o: src/Interprete.cpp headers/Interprete.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Interprete.cpp
