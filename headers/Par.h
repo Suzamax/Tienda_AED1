@@ -13,7 +13,7 @@ class Par
 {
 private:
     string w;
-    list<T> prods*; // Lista de productos que contienen la palabra w.
+    list<T> *prods; // Lista de productos que contienen la palabra w.
 public:
     Par(string w, T obj);
     void meterProducto(T obj);
