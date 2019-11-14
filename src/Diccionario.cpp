@@ -5,7 +5,7 @@ DiccionarioProductos::~DiccionarioProductos() {};
 
 /**
  * @brief Método para insertar un producto dado en el diccionario. También ordena la lista.
- * 
+ *
  * @param p Producto a insertar.
  */
 void DiccionarioProductos::insertar(Producto p) {
@@ -13,7 +13,12 @@ void DiccionarioProductos::insertar(Producto p) {
     // Obtener palabras del producto dado
     Producto *p2 = &lista.front();
     // TODO Añadiir el producto a la tabla.
-    // tabla.push
+    string s; // Un string auxiliar.
+    istringstream iss(p2->getNombre());
+    while (iss >> s) tabla.insertar(s, p2);
+    iss.clear(); // Esto se hace para quitarme de enmedio el primer string al llegar a EOL.
+    iss.str(p2->getDesc()); // Redefino el string a usar.
+    while (iss >> s) tabla.insertar(s, p2);
     contador++;
     // ! Comento porque luego meteré el orden en algún lado...
     /*lista.sort([] (const Producto & a, const Producto & b) { 
@@ -24,7 +29,7 @@ void DiccionarioProductos::insertar(Producto p) {
 
 /**
  * @brief Método para eliminar un producto del diccionario y la tabla.
- * 
+ *
  * @param id Identificador del producto a eliminar
  */
 void DiccionarioProductos::eliminar(unsigned long int id) {
@@ -44,7 +49,7 @@ void DiccionarioProductos::eliminar(unsigned long int id) {
 
 /**
  * @brief Método para encontrar un producto en base a su identificador.
- * 
+ *
  * @param id Identificador del producto a buscar.
  */
 void DiccionarioProductos::producto(unsigned long int id)
@@ -62,8 +67,8 @@ void DiccionarioProductos::producto(unsigned long int id)
 }
 
 /**
- * @brief 
- * 
+ * @brief Método para encontrar los productos con precios entre los dos dados.
+ *
  * @param min Precio mínimo
  * @param max Precio máximo
  */

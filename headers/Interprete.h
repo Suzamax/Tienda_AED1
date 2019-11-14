@@ -8,7 +8,6 @@ using namespace std;
 
 /**
  * @brief El intérprete de comandos de este programa. En función de lo que lea llamará a uno de sus métodos.
- * 
  */
 class Interprete
 {

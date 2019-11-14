@@ -6,7 +6,6 @@ using namespace std;
 
 /**
  * @brief Clase para almacenar un producto.
- * 
  */
 class Producto
 {
@@ -26,6 +25,12 @@ public:
     };
     double getPrecio() {
         return precio;
+    }
+    string getNombre(){
+        return nombre;
+    }
+    string getDesc(){
+        return descripcion;
     }
     // bool es_anterior(Producto &otro); // TODO cosas
     ~Producto();

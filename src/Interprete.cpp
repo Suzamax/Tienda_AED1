@@ -18,7 +18,7 @@ Interprete::Interprete(DiccionarioProductos *dic)
  */
 Interprete::~Interprete()
 {
-    //
+    // Nada...
 }
 
 /**

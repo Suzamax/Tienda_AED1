@@ -4,7 +4,6 @@
 
 /**
  * @brief Función de dispersión, usa FNV-1 de 32 bits.
- * 
  */
 class Hash
 {

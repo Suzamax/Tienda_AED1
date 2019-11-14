@@ -2,10 +2,10 @@
 #define TIENDA_PAR_H
 
 #include "Producto.h"
+#include <list>
 
 /**
  * @brief Un par palabra-lista de productos.
- * 
  * @tparam T Clase arbitraria. En este caso serán punteros a productos.
  */
 template <class T>
@@ -16,6 +16,9 @@ private:
     list<T> *prods; // Lista de productos que contienen la palabra w.
 public:
     Par(string w, T obj);
+    string getPalabra() {
+        return w;
+    }
     void meterProducto(T obj);
     ~Par();
 };

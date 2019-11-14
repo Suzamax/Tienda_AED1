@@ -9,3 +9,5 @@ cmake-build-debug/*
 salida
 .vscode/*
 .DS_Store
+*.xcworkspace
+TIENDA.xcodeproj

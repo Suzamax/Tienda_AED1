@@ -3,24 +3,27 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -Wno-deprecated -O2
 INCLUDE = -I./headers
 TARGET = a.out
-OBJECTS = out/Diccionario.o out/Producto.o out/Interprete.o out/TablaHash.o out/Par.o out/main.o
+OBJECTS = Diccionario.o Producto.o Interprete.o TablaHash.o Par.o main.o
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(INCLUDE) $(CFLAGS) $(OBJECTS)
 
-out/Par.o: src/Par.cpp headers/Par.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c src/Par.cpp -o out/Par.o
+main.o: src/main.cpp
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/main.cpp -o main.o
 
-out/TablaHash.o: src/TablaHash.cpp headers/TablaHash.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c src/TablaHash.cpp -o out/TablaHash.o
+Par.o: src/Par.cpp headers/Par.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Par.cpp -o Par.o
 
-out/Diccionario.o: src/Diccionario.cpp headers/Diccionario.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c src/Diccionario.cpp -o out/Diccionario.o
+TablaHash.o: src/TablaHash.cpp headers/TablaHash.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/TablaHash.cpp -o TablaHash.o
 
-out/Producto.o: src/Producto.cpp headers/Producto.h
+Diccionario.o: src/Diccionario.cpp headers/Diccionario.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Diccionario.cpp -o Diccionario.o
+
+Producto.o: src/Producto.cpp headers/Producto.h
 	$(CC) $(INCLUDE) $(CFLAGS) -c src/Producto.cpp -o Producto.o
 
-out/Interprete.o: src/Interprete.cpp headers/Interprete.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c src/Interprete.cpp -o out/Interprete.o
+Interprete.o: src/Interprete.cpp headers/Interprete.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Interprete.cpp -o Interprete.o

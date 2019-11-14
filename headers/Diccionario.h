@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <list>
+#include <sstream>
 #include "TablaHash.h"
 using namespace std;
 
 /**
  * @brief Clase en la que se almacena la lista de productos, nº de productos y una tabla con las correspondencias entre palabras y productos.
- * 
  */
 class DiccionarioProductos
 {

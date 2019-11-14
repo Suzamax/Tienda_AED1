@@ -8,12 +8,13 @@ TablaHash::TablaHash()
 {
     max = 0xFFF;
     nE = 0;
-    T = new list<Par<Producto*> >[max];
+    // Inicializo array con tamaño máximo y todo a NULL.
+    Par<Producto*> T[max] = {};
 }
 
 TablaHash::~TablaHash()
 {
-    delete T;
+    delete &T;
 }
 
 /**
@@ -24,13 +25,15 @@ TablaHash::~TablaHash()
  */
 void TablaHash::insertar(string w, Producto *nuevo)
 {
-    // ! i = hash(string)
-    // Si está w, entonces nuevo se mete a un par ya existente
-    // ! list<Par<Producto*> >::iterator loops = pares[i].begin();
-
-    // ! while(loops != pares.end() && loops->get() != w) loops++;
+    int hash = Hash::CalcHash(w, max);
+    // Si está, metemos el producto. También hay que comprobar el ignoto caso
+    // de que haya sinonimia con el hash.
+    if (T[hash] != NULL && T[hash].getPalabra() == w) {
+        T[hash].meterProducto(nuevo);
+        nE-=-1; // EDGY
+    }
     // Si no, creamos el nuevo par
-    // ! else pares[]
+    else T[hash] = new Par(w, nuevo);
 }
 
 /**
@@ -38,9 +41,10 @@ void TablaHash::insertar(string w, Producto *nuevo)
  * 
  * @param w Palabra a buscar
  */
-void TablaHash::consultar(string w)
+list<Par<Producto*> > TablaHash::consultar(string w)
 {
-    
+    int hash = Hash::CalcHash(w, max);
+    return T[hash];
 }
 
 void TablaHash::reestructurar()
