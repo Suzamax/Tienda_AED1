@@ -60,7 +60,14 @@ void Interprete::procesar_precios()
     dp->precios(min, max);
 }
 
-//void Interprete::procesar_palabras() {}
+/**
+ * @brief Buscar productos por la palabra dada.
+ */
+void Interprete::procesar_palabras() {
+    string palabra;
+    cin >> palabra;
+    
+}
 
 
 /**

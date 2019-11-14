@@ -4,6 +4,35 @@ DiccionarioProductos::DiccionarioProductos() {};
 DiccionarioProductos::~DiccionarioProductos() {};
 
 /**
+ * @brief Conversor de palabras a minúsculas
+ * @param input Una palabra
+ * @return string Palabra en minúsculas
+ */
+string DiccionarioProductos::tolow(string input)
+{
+    string out;
+    for (unsigned i = 0; i < input.length(); i++)
+    {
+        if (input[i] == (char) 0xC3){
+            out.push_back(input[i++]);
+            if ((input[i] >> 5 & 1) == 0)
+            {
+                input[i] |= 1 << 5;
+                out.push_back(input[i]);
+            }
+        }
+        else if (input[i] > 0x40 && input[i] < 0x5B) // MAYUS
+        {
+            input[i] |= 1 << 5;
+            out.push_back(input[i]);
+        }
+        else out.push_back(input[i]);
+    }
+    return out;
+}
+
+
+/**
  * @brief Método para insertar un producto dado en el diccionario. También ordena la lista.
  *
  * @param p Producto a insertar.
@@ -15,15 +44,11 @@ void DiccionarioProductos::insertar(Producto p) {
     // TODO Añadiir el producto a la tabla.
     string s; // Un string auxiliar.
     istringstream iss(p2->getNombre());
-    while (iss >> s) tabla.insertar(s, p2);
+    while (iss >> s) tabla.insertar(tolow(s), p2);
     iss.clear(); // Esto se hace para quitarme de enmedio el primer string al llegar a EOL.
     iss.str(p2->getDesc()); // Redefino el string a usar.
-    while (iss >> s) tabla.insertar(s, p2);
+    while (iss >> s) tabla.insertar(tolow(s), p2);
     contador++;
-    // ! Comento porque luego meteré el orden en algún lado...
-    /*lista.sort([] (const Producto & a, const Producto & b) { 
-        return (a.getID() < b.getID());
-    });*/
     cout << contador << " productos" << endl;
 }
 
@@ -92,3 +117,10 @@ void DiccionarioProductos::precios(double min, double max)
     cout << "Total: " << items << " productos" << endl;
 }
 
+void DiccionarioProductos::sortProductos()
+{
+    // ! Comento porque luego meteré el orden en algún lado...
+    /*lista.sort([] (const Producto & a, const Producto & b) {
+        return (a.getID() < b.getID());
+    });*/
+}

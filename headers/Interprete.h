@@ -18,7 +18,7 @@ class Interprete
         ~Interprete();
         void obtener_comando(string c);
         void procesar_insertar();
-        //void procesar_palabras();
+        void procesar_palabras();
         void procesar_precios();
         void procesar_eliminar();
         void procesar_producto();

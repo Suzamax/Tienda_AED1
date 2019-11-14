@@ -12,7 +12,6 @@ using namespace std;
  */
 class DiccionarioProductos
 {
-    friend class TablaHash;
     private:
         list<Producto> lista;
         int contador;
@@ -20,6 +19,7 @@ class DiccionarioProductos
     public:
         DiccionarioProductos();
         ~DiccionarioProductos();
+        string tolow(string w);
         void insertar (Producto nuevo); // DONE
         void eliminar (unsigned long int id); // DONE
         void producto (unsigned long int id); // DONE
