@@ -13,9 +13,6 @@ $(TARGET): $(OBJECTS)
 main.o: src/main.cpp
 	$(CC) $(INCLUDE) $(CFLAGS) -c src/main.cpp -o main.o
 
-Par.o: src/Par.cpp headers/Par.h
-	$(CC) $(INCLUDE) $(CFLAGS) -c src/Par.cpp -o Par.o
-
 TablaHash.o: src/TablaHash.cpp headers/TablaHash.h
 	$(CC) $(INCLUDE) $(CFLAGS) -c src/TablaHash.cpp -o TablaHash.o
 
