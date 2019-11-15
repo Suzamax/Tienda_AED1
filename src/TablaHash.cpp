@@ -65,7 +65,7 @@ void TablaHash::reestructurar()
         int hash;
         for(int i=0; i<nE; i++){
             aux=T[i];
-            hash = Hash::CalcHash(aux->devolverProducto().getNombre(), max);
+            hash = Hash::CalcHash(aux->getPalabra, max);
             TAux[hash] = aux;
         }
         // Cambiamos la lista de nuestro objeto por la lista nueva
