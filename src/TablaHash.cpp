@@ -1,5 +1,6 @@
 #include <list>
 #include "TablaHash.h"
+#include "math.h"
 using namespace std;
 
 // ! COSAS
@@ -55,7 +56,20 @@ void TablaHash::reestructurar()
     if (nE > 1.95 * max)
     {
         // TODO:
-        // ! aumentar max en un 33%
-        // ! Volver a hacer hash de cada elemento
+        // Aumentar max en un 33%
+        float val = floorf(max*1.33)+1;
+        max=val;
+        // Hacemos una tabla con el nuevo tamaño e insertamos todos los pares en ella
+        Par<Producto*> ** TAux = new Par<Producto*>*[max] {NULL};
+        Par<Producto*> * aux;
+        int hash;
+        for(int i=0; i<nE; i++){
+            aux=T[i];
+            hash = Hash::CalcHash(aux->devolverProducto().getNombre(), max);
+            TAux[hash] = aux;
+        }
+        // Cambiamos la lista de nuestro objeto por la lista nueva
+        // ! Falta eliminar memoria contenida en T
+        T=TAux;
     }
 }

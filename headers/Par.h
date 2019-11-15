@@ -20,6 +20,8 @@ public:
         return w;
     }
     void meterProducto(T obj);
+
+    Producto devolverProducto();
     ~Par();
 };
 
@@ -62,6 +64,13 @@ template <class T>
 void Par<T>::meterProducto(T obj)
 {
     prods->push_front(obj);
+}
+
+template <class T>
+Producto Par<T>::devolverProducto()
+{
+    //Como de momento sólo necesitamos esta operación para la función de dispersión, nos basta con obtener el primer elemento
+    return prods.begin();
 }
 
 #endif //TIENDA_PAR_H
