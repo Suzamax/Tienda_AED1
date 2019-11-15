@@ -21,7 +21,7 @@ public:
     }
     void meterProducto(T obj);
 
-    Producto devolverProducto();
+    list<T> getList();
     ~Par();
 };
 
@@ -67,10 +67,9 @@ void Par<T>::meterProducto(T obj)
 }
 
 template <class T>
-Producto Par<T>::devolverProducto()
+list<T> Par<T>::getList()
 {
-    //Como de momento sólo necesitamos esta operación para la función de dispersión, nos basta con obtener el primer elemento
-    return prods.begin();
+    return prods;
 }
 
 #endif //TIENDA_PAR_H

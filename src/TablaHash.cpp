@@ -1,6 +1,6 @@
 #include <list>
 #include "TablaHash.h"
-#include "math.h"
+// #include "math.h" // No hace falta, hacemos un parsing a Entero
 using namespace std;
 
 // ! COSAS
@@ -51,25 +51,29 @@ Par<Producto*> TablaHash::consultar(string w)
     return *T[hash];
 }
 
+/**
+ * @brief Método para reestructurar
+ */
 void TablaHash::reestructurar()
 {
     if (nE > 1.95 * max)
     {
-        // TODO:
         // Aumentar max en un 33%
-        float val = floorf(max*1.33)+1;
-        max=val;
+        float val = max * 1.33;
+        max = (int) val; // A esto me refiero, hacer un parsing.
         // Hacemos una tabla con el nuevo tamaño e insertamos todos los pares en ella
         Par<Producto*> ** TAux = new Par<Producto*>*[max] {NULL};
         Par<Producto*> * aux;
         int hash;
-        for(int i=0; i<nE; i++){
-            aux=T[i];
-            hash = Hash::CalcHash(aux->getPalabra, max);
+        for (int i = 0; i < nE; i++)
+		{
+            aux = T[i];
+            hash = Hash::CalcHash(aux->getPalabra(), max);
             TAux[hash] = aux;
         }
         // Cambiamos la lista de nuestro objeto por la lista nueva
         // ! Falta eliminar memoria contenida en T
-        T=TAux;
+		delete T; // Liberamos el kraken
+        T = TAux; // Metemos la nueva tabl
     }
 }
