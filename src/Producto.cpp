@@ -25,3 +25,8 @@ void Producto::mostrar()
     cout << "  " << descripcion << endl;
     cout << "  " << precio << " euros" << endl;
 }
+
+bool operator== (const Producto& uno, const Producto& otro)
+{
+    return uno.getID() == otro.getID();
+}

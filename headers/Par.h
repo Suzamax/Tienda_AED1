@@ -16,15 +16,14 @@ private:
     list<T> *prods; // Lista de productos que contienen la palabra w.
 public:
     Par(string w, T obj);
+    Par();
     string getPalabra() {
         return w;
     }
     void meterProducto(T obj);
-
-    list<T> getList();
+    list<T>* getList();
     ~Par();
 };
-
 
 /**
  * @brief Constructor
@@ -41,11 +40,19 @@ Par<T>::Par(string w, T obj)
     prods->push_front(obj);
 }
 
+/**
+ * @brief Constructor por defecto. Agujeros negros.
+ */
+template <class T>
+Par<T>::Par()
+{
+    // NULL BOIS
+}
 
 
 /**
  * @brief Destructor
- * 
+ *
  * @tparam T Clase del objeto. Normalmente punteros a productos.
  */
 template <class T>
@@ -56,7 +63,7 @@ Par<T>::~Par()
 
 /**
  * @brief Método para introducir un producto más a la lista de productos.
- * 
+ *
  * @tparam T Tipo, en este caso será un puntero a producto.
  * @param obj Producto.
  */
@@ -67,7 +74,7 @@ void Par<T>::meterProducto(T obj)
 }
 
 template <class T>
-list<T> Par<T>::getList()
+list<T>* Par<T>::getList()
 {
     return prods;
 }
