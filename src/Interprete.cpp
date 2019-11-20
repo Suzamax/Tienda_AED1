@@ -14,7 +14,6 @@ Interprete::Interprete(DiccionarioProductos *dic)
 
 /**
  * @brief Destruye el intérprete.
- *
  */
 Interprete::~Interprete()
 {
@@ -70,17 +69,19 @@ void Interprete::procesar_palabras() {
     palabra = Utilidades::tolow(palabra);
     // Se obtienen los productos de la palabra.
     TablaHash *tabla = dp->getTabla();
-    Par<Producto*> *par = tabla->consultar(palabra);
+    unsigned hash = Utilidades::FNV(palabra, tabla->getMax());
+    Par<Producto*> *par = tabla->consultar(hash, palabra);
     // Hacer esto si el par es válido
-    if (par->getPalabra() == palabra)
+    if (par)
     {
-        list<Producto*> *lista = par->getList();
-        lista->sort([] (const Producto *a, const Producto *b) {
+        list<Producto*> lista = *par->getList();
+        lista.sort([] (const Producto *a, const Producto *b) {
             return (a->getID() < b->getID());
         });
-        list<Producto*>::iterator loops = lista->begin();
+        lista.unique();
+        list<Producto*>::iterator loops = lista.begin();
         int i = 0;
-        while (loops != lista->end())
+        while (loops != lista.end())
         {
             Producto *p = *loops;
             cout << ++i << ". ";

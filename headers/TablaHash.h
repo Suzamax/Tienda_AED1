@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <array>
+#include <list>
 #include "Par.h"
 #include "Utilidades.h"
 using namespace std;
@@ -11,18 +12,17 @@ class TablaHash
 {
 private:
     // Tamaño de la tabla
-    int max;
+    unsigned max;
     // Palabras con sus productos. Tamaño variable de la tabla, redistribuible.
-    // Nota para los profesores: No tiene sentido usar un list en este caso. Mejor un ARRAY.
-    int nE; // nº elementos
-    Par<Producto*> *T;
+    unsigned nE; // nº elementos
+    list<Par<Producto*> > * T;
 public:
     TablaHash();
     ~TablaHash();
     void insertar(string w, Producto *nuevo); // Insertar un nuevo par
-    Par<Producto*>* consultar(string w); // Consultar palabra
-    int getNumElem() { return nE; }
-    int getMax() { return max; }
+    Par<Producto*> * consultar(unsigned hash, string w) const; // Consultar palabra
+    unsigned getNumElem() { return nE; }
+    unsigned getMax() { return max; }
     void reestructurar(); // Rehash
 };
 

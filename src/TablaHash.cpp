@@ -1,4 +1,5 @@
 #include <list>
+#include <algorithm>
 #include "TablaHash.h"
 // #include "math.h" // No hace falta, hacemos un parsing a Entero
 using namespace std;
@@ -7,15 +8,11 @@ using namespace std;
 
 TablaHash::TablaHash()
 {
-    max = 0xFFFF;
+    // Max debe ser PREMOH.
+    max = 0x18000; //Utilidades::CalcPrimo(0xFFFF);
     nE = 0;
     // Inicializo array con tamaño máximo y todo vacío.
-    T = new Par<Producto*>[max];
-    for (int i = 0; i < max; i++)
-    {
-        Par<Producto*> * aux = new Par<Producto*>();
-        T[i] = *aux;
-    }
+    T = new list<Par<Producto*> >[max];
 }
 
 TablaHash::~TablaHash()
@@ -31,60 +28,75 @@ TablaHash::~TablaHash()
  */
 void TablaHash::insertar(string w, Producto * nuevo)
 {
-    unsigned int hash = Utilidades::CalcHash(w, max);
+    unsigned hash = Utilidades::FNV(w, max);
+    
     // Si está, metemos el producto. También hay que comprobar el ignoto caso
     // de que haya sinonimia con el hash. Todo a la vez.
-    if (T[hash].getPalabra() == w) {
-        list<Producto*>::iterator loops = T[hash].getList()->begin();
-        while (loops != T[hash].getList()->end() && !(**loops == *nuevo)) loops++;
-        if (loops == T[hash].getList()->end())
-        {
-            T[hash].meterProducto(nuevo);
-            nE++;
-        }
+    list<Par<Producto*> >::iterator loops = T[hash].begin();
+    while (loops != T[hash].end() && loops->getPalabra() != w) loops++;
+        
+    if (loops != T[hash].end())
+    {
+        loops->meterProducto(nuevo);
+        nE++;
     }
+
     // Si no, creamos el nuevo par
     else {
         Par<Producto*> *par = new Par<Producto*>(w, nuevo);
-        T[hash] = *par;
+        T[hash].push_back(*par);
         nE++;
     }
+    // reestructurar();
+     
 }
 
 /**
  * @brief Este método sirve para consultar los productos que se encuentren en la tabla y coincidan con la cadena dada.
  *
- * @param w Palabra a buscar
+ * @param hash Hash a buscar
  */
-Par<Producto*>* TablaHash::consultar(string w)
+Par<Producto*> * TablaHash::consultar(unsigned hash, string w) const
 {
-    int hash = Utilidades::CalcHash(w, max);
-    return &T[hash];
+    list<Par<Producto*> >::iterator loops = T[hash].begin();
+    while (loops != T[hash].end() && loops->getPalabra() != w) loops++;
+    if (loops != T[hash].end()) return &(*loops);
+    return NULL;
 }
+
 
 /**
  * @brief Método para reestructurar
  */
 void TablaHash::reestructurar()
 {
-    if (nE > 1.95 * max)
+    /*
+    if (nE > (2 * max))
     {
-        // Aumentar max en un 33%
-        float val = max * 1.33;
-        max = (int) val; // A esto me refiero, hacer un parsing.
+        unsigned b = max;
+        // Aumentar max al siguiente primo después de 2*max
+        max = Utilidades::CalcPrimo(max);
         // Hacemos una tabla con el nuevo tamaño e insertamos todos los pares en ella
         Par<Producto*> * TAux = new Par<Producto*>[max];
-        Par<Producto*> aux;
-        int hash;
-        for (int i = 0; i < nE; i++)
+        Par<Producto*> * aux = nullptr;
+        for (unsigned i = 0; i < max; i++)
+        {
+            TAux[i] = * aux;
+        }
+        //unsigned hash, hash2;
+        for (unsigned i = 0; i < b; i++)
 		{
-            aux = T[i];
-            hash = Utilidades::CalcHash(aux.getPalabra(), max);
-            TAux[hash] = aux;
+            * aux = T[i];
+            if (aux != nullptr)
+            {
+                // TODO here
+                
+            }
         }
         // Cambiamos la lista de nuestro objeto por la lista nueva
         // ! Falta eliminar memoria contenida en T
-		delete T; // Liberamos el kraken
-        T = TAux; // Metemos la nueva tabl
+		delete[] T; // Liberamos tabla
+        T = TAux; // Metemos la nueva tabla
     }
+     */
 }

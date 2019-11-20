@@ -4,19 +4,31 @@
  * @brief Función de dispersión. FNV-1
  *
  * @param w Palabra a la que "hashear"
- * @param s Longitud del array
  * @return int Hash
  */
-int Utilidades::CalcHash(std::string w, int s)
+int Utilidades::FNV(string w, int s)
 {
     unsigned int hash = FNVoffset;
-    for(int i = 0; i < w.length(); i++)
+    for (unsigned i = 0; i < w.length(); i++)
     {
         hash = hash * FNVprimo;
         hash = hash ^ w[i];
     }
     return hash % s;
 }
+
+int Utilidades::CalcPrimo(int p)
+{
+    int i, j = 2;
+    for(i = p + 1; i < (p * 2); i++)
+    {
+        j = 2;
+        while (j < i && i % j != 0) j++;
+        if (i == j) return i;
+    }
+    return 0;
+}
+
 
 /**
  * @brief Conversor de palabras a minúsculas

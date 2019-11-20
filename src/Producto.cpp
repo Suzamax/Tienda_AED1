@@ -28,5 +28,7 @@ void Producto::mostrar()
 
 bool operator== (const Producto& uno, const Producto& otro)
 {
-    return uno.getID() == otro.getID();
+    if (uno.getID() != otro.getID())
+        return uno.getNombre() != otro.getNombre();
+    return false;
 }

@@ -11,8 +11,9 @@ private:
     static const int FNVprimo = 0x01000193;
     static const int FNVoffset = 0x811c9dc5;
 public:
-    static int CalcHash(std::string w, int size);
+    static int FNV(string w, int s);
     static string tolow(string input);
+    static int CalcPrimo(int p);
 };
 
 #endif //TIENDA_UTILIDADES_H

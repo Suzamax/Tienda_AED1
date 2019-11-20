@@ -58,7 +58,7 @@ Par<T>::Par()
 template <class T>
 Par<T>::~Par()
 {
-    delete prods;
+
 }
 
 /**

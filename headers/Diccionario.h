@@ -24,8 +24,7 @@ public:
     void producto (unsigned long int id); // DONE
     void precios (double min, double max); // DONE
     int getContador() { return contador; }
-    TablaHash* getTabla() { return &tabla; }
-    void sortProductos();
+    TablaHash * getTabla() { return &tabla; }
 };
 
 #endif //TIENDA_DICCIONARIO_H

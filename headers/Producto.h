@@ -12,24 +12,21 @@ class Producto
 private:
     unsigned long int id;
     string nombre, descripcion;
-    double precio;
+    float precio;
 public:
     Producto();
     void leer();
     void mostrar();
-    unsigned long int getID() {
-        return id;
-    };
     unsigned long int getID() const {
         return id;
     };
-    double getPrecio() {
+    float getPrecio() const {
         return precio;
     }
-    string getNombre(){
+    string getNombre() const {
         return nombre;
     }
-    string getDesc(){
+    string getDesc() const {
         return descripcion;
     }
     friend bool operator== (const Producto & uno, const Producto & otro);

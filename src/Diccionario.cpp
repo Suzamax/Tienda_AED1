@@ -75,7 +75,6 @@ void DiccionarioProductos::precios(double min, double max)
 
     while(loops != lista.end())
     {
-        
         if (loops->getPrecio() >= min && loops->getPrecio() <= max)
         {
             cout << ++items << ". ";
@@ -86,10 +85,3 @@ void DiccionarioProductos::precios(double min, double max)
     cout << "Total: " << items << " productos" << endl;
 }
 
-void DiccionarioProductos::sortProductos()
-{
-    // ! Comento porque luego meteré el orden en algún lado...
-    /*lista.sort([] (const Producto & a, const Producto & b) {
-        return (a.getID() < b.getID());
-    });*/
-}
