@@ -1,33 +1,12 @@
-#ifndef ARBOL_H
-#define ARBOL_H
+#ifndef TIENDA_ARBOL_H
+#define TIENDA_ARBOL_H
 
 #include <iostream>
 #include <list>
 #include <sstream>
-#include "Producto.h"
+#include "Nodo.h"
+
 using namespace std;
-
-/**
- * @brief Clase que define los nodos del árbol
- */
-
-class Nodo
-{
-    private:
-    Nodo *hijoizquierdo;
-    Nodo *hijoderecho;
-    double Precio;
-    list<Producto*> lista;
-
-    public:
-    Nodo ();
-    ~Nodo();
-    double precio ();
-    Nodo * getHijoIzquierdo();
-    Nodo * getHijoDerecho();
-    void insertarproducto (Producto *prod);
-
-};
 
 /**
  * @brief Clase en la que se almacena un árbol que incluye en sus nodos el precio correspondiente a los productos
@@ -37,15 +16,14 @@ class Nodo
 
 class Arbol
 {
-    private:
+private:
     Nodo *raiz;
-
-
-    public:
+public:
     Arbol ();
     ~Arbol();
     void insertar (Producto *prod);
     void precios (double min, double max);
+    // Métodos para redistribuir el árbol
     void RSI (Nodo *&Nod);
     void RSD (Nodo *&Nod);
     void RDI (Nodo *&Nod);
