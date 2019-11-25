@@ -1,6 +1,8 @@
 #include "Diccionario.h"
 
-DiccionarioProductos::DiccionarioProductos() {};
+DiccionarioProductos::DiccionarioProductos() {
+    raiz = nullptr;
+};
 DiccionarioProductos::~DiccionarioProductos() {};
 
 /**
@@ -18,6 +20,7 @@ void DiccionarioProductos::insertar(Producto * p) {
     iss.str(p->getDesc()); // Redefino el string a usar.
     while (iss >> s) tabla.insertar(Utilidades::tolow(s), p);
     contador++;
+    arbol.insertar(raiz, p);
     cout << contador << " productos" << endl;
 }
 
@@ -29,7 +32,7 @@ void DiccionarioProductos::insertar(Producto * p) {
 void DiccionarioProductos::eliminar(unsigned long int id) {
     list<Producto>::iterator loops = lista.begin();
 
-    // ! TODO Eliminar el producto de la tabla
+    // ! TODO Eliminar el producto de la tabla y del árbol
 
     while(loops != lista.end() && loops->getID() != id) loops++;
     if (loops != lista.end()) // OR loops->getID() == id
@@ -38,6 +41,7 @@ void DiccionarioProductos::eliminar(unsigned long int id) {
         contador--;
     }
 
+    
     cout << contador << " productos" << endl;
 }
 
@@ -57,7 +61,7 @@ void DiccionarioProductos::producto(unsigned long int id)
         loops->mostrar();
     } 
 
-    cout << "Total: "<< (loops != lista.end()) << " productos" << endl;
+    cout << "Total: " << (loops != lista.end()) << " productos" << endl;
 }
 
 /**
@@ -71,17 +75,21 @@ void DiccionarioProductos::precios(double min, double max)
     cout << "precios " << min << " " << max << endl;
     int items = 0;
     
-    list<Producto>::iterator loops = lista.begin();
+    list<Producto*> prods = arbol.precios(raiz, min, max);
+    prods.sort([] (const Producto *a, const Producto *b) {
+        return (a->getID() < b->getID());
+    });
 
-    while(loops != lista.end())
+    list<Producto*>::iterator loops = prods.begin();
+
+    while(loops != prods.end())
     {
-        if (loops->getPrecio() >= min && loops->getPrecio() <= max)
-        {
-            cout << ++items << ". ";
-            loops->mostrar();
-        }
+        cout << ++items << ". ";
+        Producto * p = *loops;
+        p->mostrar();
         loops++;
     }
+     
     cout << "Total: " << items << " productos" << endl;
 }
 

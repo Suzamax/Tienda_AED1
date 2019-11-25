@@ -5,6 +5,7 @@
 #include <list>
 #include <sstream>
 #include "TablaHash.h"
+#include "Arbol.h"
 using namespace std;
 
 /**
@@ -16,6 +17,8 @@ private:
     list<Producto> lista;
     int contador;
     TablaHash tabla;
+    Arbol arbol;
+    Nodo * raiz;
 public:
     DiccionarioProductos();
     ~DiccionarioProductos();

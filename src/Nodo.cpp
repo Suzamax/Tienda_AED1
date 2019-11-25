@@ -1,24 +1,16 @@
 #include "Nodo.h"
 
-Nodo::Nodo() {};
-Nodo::~Nodo() {};
-
-double Nodo::precio()
+Nodo::Nodo(float precio, Producto * p)
 {
-    return Precio;
+    this->precio = precio;
+    lista = new list<Producto*>();
+    lista->push_front(p);
+    izq = nullptr;
+    der = nullptr;
 }
 
-void Nodo::insertarproducto(Producto *prod)
+Nodo::~Nodo()
 {
-    lista.push_front(prod);
+    delete lista;
 }
 
-Nodo* Nodo::getHijoIzquierdo()
-{
-    return hijoizquierdo;
-}
-
-Nodo* Nodo::getHijoDerecho()
-{
-    return hijoderecho;
-}

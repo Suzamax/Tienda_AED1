@@ -30,6 +30,7 @@ public:
         return descripcion;
     }
     friend bool operator== (const Producto & uno, const Producto & otro);
+    friend bool operator< (const Producto & uno, const Producto & otro);
     // bool es_anterior(Producto &otro); // TODO cosas
     ~Producto();
 };

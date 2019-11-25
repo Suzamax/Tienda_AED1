@@ -64,3 +64,8 @@ string Utilidades::tolow(string input)
     }
     return out;
 }
+
+bool Utilidades::Comparador (Producto* & first, Producto* & second)
+{
+    return (*first < *second);
+}

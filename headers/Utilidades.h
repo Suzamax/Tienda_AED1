@@ -1,6 +1,7 @@
 #ifndef TIENDA_UTILIDADES_H
 #define TIENDA_UTILIDADES_H
 #include <iostream>
+#include "Producto.h"
 using namespace std;
 /**
  * @brief Función de dispersión, usa FNV-1 de 32 bits.
@@ -14,6 +15,7 @@ public:
     static int FNV(string w, int s);
     static string tolow(string input);
     static int CalcPrimo(int p);
+    static bool Comparador(Producto* & first, Producto* & second);
 };
 
 #endif //TIENDA_UTILIDADES_H

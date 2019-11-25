@@ -5,6 +5,7 @@
 #include <list>
 #include <sstream>
 #include "Producto.h"
+#include "Utilidades.h"
 using namespace std;
 
 /**
@@ -14,17 +15,20 @@ using namespace std;
 class Nodo
 {
 private:
-    Nodo *hijoizquierdo;
-    Nodo *hijoderecho;
-    double Precio;
-
+    Nodo * izq;
+    Nodo * der;
+    float precio;
+    int altura;
+    list<Producto*> * lista;
 public:
-    Nodo ();
+    Nodo(float precio, Producto * p);
     ~Nodo();
-    double precio ();
-    Nodo * getHijoIzquierdo();
-    Nodo * getHijoDerecho();
-    void insertarproducto (Producto *prod);
+    float getPrecio() { return precio; }
+    list<Producto*> * getLista() { return lista; }
+    void setHijoIzquierdo(Nodo * n) { izq = n; }
+    Nodo * getHijoIzquierdo() { return izq; }
+    void setHijoDerecho(Nodo * n) { der = n; }
+    Nodo * getHijoDerecho() { return der; }
 };
 
 #endif

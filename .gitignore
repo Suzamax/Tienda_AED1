@@ -11,3 +11,4 @@ salida
 .DS_Store
 *.xcworkspace
 TIENDA.xcodeproj
+*.srctrl*

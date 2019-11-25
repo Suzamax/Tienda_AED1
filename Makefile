@@ -3,7 +3,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -Wno-deprecated -O2
 INCLUDE = -I./headers
 TARGET = a.out
-OBJECTS = Diccionario.o Producto.o Interprete.o Utilidades.o TablaHash.o main.o
+OBJECTS = Diccionario.o Producto.o Interprete.o Utilidades.o TablaHash.o Arbol.o Nodo.o main.o
 
 all: $(TARGET)
 
@@ -27,3 +27,9 @@ Utilidades.o: src/Utilidades.cpp headers/Utilidades.h
 
 Interprete.o: src/Interprete.cpp headers/Interprete.h
 	$(CC) $(INCLUDE) $(CFLAGS) -c src/Interprete.cpp -o Interprete.o
+
+Arbol.o: src/Arbol.cpp headers/Arbol.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Arbol.cpp -o Arbol.o
+
+Nodo.o: src/Nodo.cpp headers/Nodo.h
+	$(CC) $(INCLUDE) $(CFLAGS) -c src/Nodo.cpp -o Nodo.o
