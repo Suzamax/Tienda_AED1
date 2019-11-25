@@ -12,3 +12,4 @@ salida
 *.xcworkspace
 TIENDA.xcodeproj
 *.srctrl*
+*.pdf
