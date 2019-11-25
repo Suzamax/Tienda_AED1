@@ -16,24 +16,23 @@ using namespace std;
 
 class Arbol
 {
-private:
-    Nodo * raiz;
 public:
     Arbol();
     ~Arbol();
-    // Métodos para redistribuir el árbol
+    int getAltura(Nodo * n);
     /// Inserta un producto, llamando a la función de forma recursiva.
+    /// @param raiz Raíz del árbol
     /// @param prod Producto a añadir
-    void insertar(Nodo * raiz, Producto *prod);
+    Nodo * insertar(Nodo * raiz, Producto *prod);
+    Nodo * actualizarAltura(Nodo * n);
     /// Evalúa nodos para obtener aquellos entre dos precios.
     /// @param min Precio mínimo
     /// @param max Precio máximo
     list<Producto*> precios(Nodo * raiz, float min, float max);
+    
     // Rotaciones
-    void RSI();
-    void RSD();
-    void RDI();
-    void RDD();
+    Nodo * RI(Nodo * n);
+    Nodo * RD(Nodo * n);
 };
 
 #endif

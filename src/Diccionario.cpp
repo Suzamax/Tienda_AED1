@@ -1,6 +1,7 @@
 #include "Diccionario.h"
 
 DiccionarioProductos::DiccionarioProductos() {
+    arbol = new Arbol();
     raiz = nullptr;
 };
 DiccionarioProductos::~DiccionarioProductos() {};
@@ -20,7 +21,7 @@ void DiccionarioProductos::insertar(Producto * p) {
     iss.str(p->getDesc()); // Redefino el string a usar.
     while (iss >> s) tabla.insertar(Utilidades::tolow(s), p);
     contador++;
-    arbol.insertar(raiz, p);
+    raiz = arbol->insertar(raiz, p);
     cout << contador << " productos" << endl;
 }
 
@@ -75,7 +76,7 @@ void DiccionarioProductos::precios(double min, double max)
     cout << "precios " << min << " " << max << endl;
     int items = 0;
     
-    list<Producto*> prods = arbol.precios(raiz, min, max);
+    list<Producto*> prods = arbol->precios(raiz, min, max);
     prods.sort([] (const Producto *a, const Producto *b) {
         return (a->getID() < b->getID());
     });

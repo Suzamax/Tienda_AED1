@@ -17,7 +17,7 @@ private:
     list<Producto> lista;
     int contador;
     TablaHash tabla;
-    Arbol arbol;
+    Arbol * arbol;
     Nodo * raiz;
 public:
     DiccionarioProductos();

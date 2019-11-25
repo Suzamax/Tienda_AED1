@@ -1,28 +1,66 @@
 #include "Arbol.h"
 
-Arbol::Arbol() {
-    raiz = nullptr;
-}
+Arbol::Arbol() {}
 Arbol::~Arbol() {}
 
-void Arbol::insertar(Nodo * r, Producto *p)
+int Arbol::getAltura(Nodo * n)
 {
-    if (r == nullptr)
-        r = new Nodo(p->getPrecio(), p);
-    else if (p->getPrecio() < r->getPrecio())
-    {
-        if (r->getHijoIzquierdo() != nullptr) insertar(r->getHijoIzquierdo(), p);
-        else r->setHijoIzquierdo(new Nodo(p->getPrecio(), p));
-    }
-    else if (p->getPrecio() > r->getPrecio())
-    {
-        if (r->getHijoDerecho() != nullptr) insertar(r->getHijoDerecho(), p);
-        else r->setHijoDerecho(new Nodo(p->getPrecio(), p));
-    }
-    else // if (p->getPrecio() == r->getPrecio())
-        r->getLista()->push_front(p);
+    if (n == nullptr) return 0;
+    return n->getAltura();
 }
 
+Nodo * Arbol::insertar(Nodo * r, Producto *p)
+{
+    if (r == nullptr)
+        return new Nodo(p->getPrecio(), p);
+    else if (p->getPrecio() < r->getPrecio())
+    {
+        if (r->getHijoIzquierdo() == nullptr)
+            r->setHijoIzquierdo(new Nodo(p->getPrecio(), p));
+        else r->setHijoIzquierdo(insertar(r->getHijoIzquierdo(), p));
+    }
+        //insertar(r->getHijoIzquierdo(), p);
+    else if (p->getPrecio() > r->getPrecio())
+    {
+        if (r->getHijoDerecho() == nullptr)
+            r->setHijoDerecho(new Nodo(p->getPrecio(), p));
+        else r->setHijoDerecho(insertar(r->getHijoDerecho(), p));
+    }
+        //insertar(r->getHijoDerecho(), p);
+    else // if (p->getPrecio() == r->getPrecio())
+        r->getLista()->push_front(p);
+    
+    r = actualizarAltura(r);
+    
+    int eq = getAltura(r->getHijoIzquierdo()) - getAltura(r->getHijoDerecho());
+    
+    // Rotación doble a la ...
+    if (eq > 1 && r->getHijoIzquierdo()->getPrecio() < p->getPrecio())
+    {
+        r->setHijoIzquierdo(RI(r->getHijoIzquierdo()));
+        return RD(r);
+    }
+    // Rotación simple a la derecha
+    else if(eq > 1 && r->getHijoIzquierdo()->getPrecio() > p->getPrecio())
+        return RD(r);
+    // Rotación simple a la izquierda
+    else if(eq < -1 && r->getHijoDerecho()->getPrecio() < p->getPrecio())
+        return RI(r);
+    // Rotación doble a la ...
+    else if(eq < -1 && r->getHijoDerecho()->getPrecio() > p->getPrecio())
+    {
+        r->setHijoDerecho(RI(r->getHijoDerecho()));
+        return RI(r);
+    }
+    // Y si no...
+    return r;
+}
+
+Nodo * Arbol::actualizarAltura(Nodo * n)
+{
+    n->setAltura(1 + max(getAltura(n->getHijoIzquierdo()), getAltura(n->getHijoDerecho())));
+    return n;
+}
 
 list<Producto*> Arbol::precios(Nodo * r, float min, float max)
 {
@@ -50,4 +88,30 @@ list<Producto*> Arbol::precios(Nodo * r, float min, float max)
     }
 }
 
+Nodo * Arbol::RI (Nodo * n)
+{
+    Nodo * rd = n->getHijoDerecho();
+    Nodo * rdi = rd->getHijoIzquierdo();
+    
+    n->setHijoDerecho(rdi);
+    rd->setHijoIzquierdo(n);
+    
+    rd = actualizarAltura(rd);
+    n = actualizarAltura(n);
+    
+    return rd;
+}
 
+Nodo * Arbol::RD (Nodo * n)
+{
+    Nodo * ri = n->getHijoIzquierdo();
+    Nodo * rid = ri->getHijoDerecho();
+    
+    n->setHijoIzquierdo(rid);
+    ri->setHijoDerecho(n);
+    
+    ri = actualizarAltura(ri);
+    n = actualizarAltura(n);
+    
+    return ri;
+}

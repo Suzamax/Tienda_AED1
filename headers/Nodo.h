@@ -25,6 +25,8 @@ public:
     ~Nodo();
     float getPrecio() { return precio; }
     list<Producto*> * getLista() { return lista; }
+    int getAltura() { return altura; }
+    void setAltura(int h) { altura = h; }
     void setHijoIzquierdo(Nodo * n) { izq = n; }
     Nodo * getHijoIzquierdo() { return izq; }
     void setHijoDerecho(Nodo * n) { der = n; }
