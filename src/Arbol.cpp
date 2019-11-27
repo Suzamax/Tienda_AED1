@@ -64,9 +64,8 @@ Nodo * Arbol::actualizarAltura(Nodo * n)
 
 list<Producto*> Arbol::precios(Nodo * r, float min, float max)
 {
-    list<Producto*> * l = new list<Producto*>();
 
-    if (r == nullptr) return *l;
+    if (r == nullptr) return *new list<Producto*>();
 
     if (r->getPrecio() < min && r->der != nullptr)
         return precios(r->der, min, max);
@@ -74,6 +73,7 @@ list<Producto*> Arbol::precios(Nodo * r, float min, float max)
         return precios(r->izq, min, max);
     else if (r->getPrecio() >= min && r->getPrecio() <= max)
     {
+        list<Producto*> * l = new list<Producto*>();
         list<Producto*>::iterator loops = r->getLista()->begin();
         while (loops != r->getLista()->end())
         {
@@ -84,7 +84,7 @@ list<Producto*> Arbol::precios(Nodo * r, float min, float max)
         if (r->der != nullptr) l->merge(precios(r->der, min, max), Utilidades::Comparador);
         return *l;
     }
-    else return *l;
+    else return *new list<Producto*>();
 }
 
 Nodo * Arbol::RI (Nodo * n)
@@ -93,10 +93,12 @@ Nodo * Arbol::RI (Nodo * n)
     Nodo * rdi = rd->izq;
     
     n->der = rdi;
-    rd->izq = n;
     
-    rd = actualizarAltura(rd);
     n = actualizarAltura(n);
+    rd->izq = n;
+
+    rd = actualizarAltura(rd);
+
     
     return rd;
 }
@@ -107,10 +109,11 @@ Nodo * Arbol::RD (Nodo * n)
     Nodo * rid = ri->der;
     
     n->izq = rid;
+    
+    n = actualizarAltura(n);
     ri->der = n;
     
     ri = actualizarAltura(ri);
-    n = actualizarAltura(n);
     
     return ri;
 }
