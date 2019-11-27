@@ -6,22 +6,19 @@
 #include "Producto.h"
 using namespace std;
 
-/**
- * @brief El intérprete de comandos de este programa. En función de lo que lea llamará a uno de sus métodos.
- */
 class Interprete
 {
-    private:
-        DiccionarioProductos *dp;
-    public:
-        Interprete(DiccionarioProductos *dic);
-        ~Interprete();
-        void obtener_comando(string c);
-        void procesar_insertar();
-        void procesar_palabras();
-        void procesar_precios();
-        void procesar_eliminar();
-        void procesar_producto();
+private:
+    DiccP *dp;
+public:
+    Interprete(DiccP *dic);
+    ~Interprete();
+    void getCmd(string c);
+    void pInsertar();
+    void pPalabras();
+    void pPrecios();
+    void pEliminar();
+    void pProducto();
 };
 
 

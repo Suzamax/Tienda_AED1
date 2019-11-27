@@ -4,9 +4,6 @@
 #include <iostream>
 using namespace std;
 
-/**
- * @brief Clase para almacenar un producto.
- */
 class Producto
 {
 private:
@@ -20,7 +17,7 @@ public:
     unsigned long int getID() const {
         return id;
     };
-    float getPrecio() const {
+    float getPrec() const {
         return precio;
     }
     string getNombre() const {
@@ -31,7 +28,6 @@ public:
     }
     friend bool operator== (const Producto & uno, const Producto & otro);
     friend bool operator< (const Producto & uno, const Producto & otro);
-    // bool es_anterior(Producto &otro); // TODO cosas
     ~Producto();
 };
 

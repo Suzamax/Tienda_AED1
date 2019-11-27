@@ -7,6 +7,7 @@ Nodo::Nodo(float precio, Producto * p)
     lista->push_front(p);
     izq = nullptr;
     der = nullptr;
+    altura = 0;
 }
 
 Nodo::~Nodo()
@@ -15,4 +16,5 @@ Nodo::~Nodo()
     delete izq;
     delete der;
 }
+
 

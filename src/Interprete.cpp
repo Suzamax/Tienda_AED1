@@ -1,117 +1,59 @@
 #include "Interprete.h"
 
-// Para simplificar, llamaré método a las funciones y procedimientos que alberga la clase.
+Interprete::Interprete(DiccP *dic) { dp = dic; }
 
-/**
- * @brief Construye un nuevo intérprete.
- *
- * @param dic Diccionario de productos en el cual se van a almacenar los productos.
- */
-Interprete::Interprete(DiccionarioProductos *dic)
+Interprete::~Interprete() {}
+
+void Interprete::getCmd(string cmd)
 {
-    dp = dic;
+    if (cmd == "insertar") pInsertar();
+    if (cmd == "palabras") pPalabras();
+    if (cmd == "precios") pPrecios();
+    if (cmd == "eliminar") pEliminar();
+    if (cmd == "producto") pProducto();
 }
 
-/**
- * @brief Destruye el intérprete.
- */
-Interprete::~Interprete()
-{
-    // Nada...
-}
-
-/**
- * @brief Este método obtiene cada comando que procesará otro método de este intérprete.
- *
- * @param cmd Un comando, siendo estos: insertar, palabras, precios, eliminar y producto.
- */
-void Interprete::obtener_comando(string cmd)
-{
-    if (cmd == "insertar") Interprete::procesar_insertar();
-    if (cmd == "palabras") Interprete::procesar_palabras();
-    if (cmd == "precios")  Interprete::procesar_precios();
-    if (cmd == "eliminar") Interprete::procesar_eliminar();
-    if (cmd == "producto") Interprete::procesar_producto();
-}
-
-/**
- * @brief Este método lee "insertar" y a continuación inserta el producto leído en el diccionario.
- *
- */
-void Interprete::procesar_insertar()
+void Interprete::pInsertar()
 {
     Producto *p = new Producto();
     p->leer();
     dp->insertar(p);
-    
 }
 
-/**
- * @brief Obtiene dos precios y evalúa en el diccionario qué productos se incluyen entre el mínimo y máximo.
- *
- */
-void Interprete::procesar_precios()
+void Interprete::pPrecios()
 {
     double min, max;
     cin >> min;
     cin >> max;
-    cin.ignore(20, '\n');
     dp->precios(min, max);
 }
 
-/**
- * @brief Buscar productos por la palabra dada, y los muestra.
- */
-void Interprete::procesar_palabras() {
-    string palabra;
-    cin >> palabra;
-    cout << "palabras " << palabra << endl;
-    palabra = Utilidades::tolow(palabra);
-    // Se obtienen los productos de la palabra.
+void Interprete::pPalabras() {
+    string s;
+    cin >> s;
+    cout << "palabras " << s << endl;
+    int i = 0;
+    s = Utilidades::tolow(s);
     TablaHash *tabla = dp->getTabla();
-    unsigned hash = Utilidades::FNV(palabra, tabla->getMax());
-    Par<Producto*> *par = tabla->consultar(hash, palabra);
-    // Hacer esto si el par es válido
+    Par<Producto*> *par = tabla->consultar(Utilidades::FNV(s, tabla->getMax()), s);
     if (par)
     {
-        list<Producto*> lista = *par->getList();
-        lista.sort([] (const Producto *a, const Producto *b) {
-            return (a->getID() < b->getID());
-        });
-        lista.unique();
-        list<Producto*>::iterator loops = lista.begin();
-        int i = 0;
-        while (loops != lista.end())
-        {
-            Producto *p = *loops;
-            cout << ++i << ". ";
-            p->mostrar();
-            loops++;
-        }
-        cout << "Total: " << i << " productos" << endl;
+        list<Producto*> l = *par->getList();
+        i = Utilidades::Mostrar(l);
     }
-    else cout << "Total: 0 productos" << endl;
+   cout << "Total: " << i << " productos" << endl;
 }
 
-
-/**
- * @brief Muestra un producto especificado por el identificador dado.
- *
- */
-void Interprete::procesar_producto()
+void Interprete::pProducto()
 {
-    unsigned long int id;
+    unsigned long id;
     cin >> id;
     dp->producto(id);
 }
 
-/**
- * @brief Destruye el producto especificado por el identificador dado.
- *
- */
-void Interprete::procesar_eliminar()
+void Interprete::pEliminar()
 {
-    unsigned long int id;
+    unsigned long id;
     cin >> id;
     dp->eliminar(id);
 }

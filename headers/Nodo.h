@@ -8,10 +8,6 @@
 #include "Utilidades.h"
 using namespace std;
 
-/**
- * @brief Clase que define los nodos del árbol
- */
-
 class Nodo
 {
 private:
@@ -24,15 +20,9 @@ public:
     Nodo(float precio, Producto * p);
     ~Nodo();
     float getPrecio() { return precio; }
-    list<Producto*> * getLista() { return lista; }
-    int getAltura() { return altura; }
+    list<Producto*> * getList() { return lista; }
+    int getAlt() { return altura; }
     void setAltura(int h) { altura = h; }
-    /*
-        void setHijoIzquierdo(Nodo * n) { izq = n; }
-        Nodo * getHijoIzquierdo() { return izq; }
-        void setHijoDerecho(Nodo * n) { der = n; }
-        Nodo * getHijoDerecho() { return der; }
-    */
 };
 
 #endif

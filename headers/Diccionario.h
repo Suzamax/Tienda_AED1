@@ -8,10 +8,7 @@
 #include "Arbol.h"
 using namespace std;
 
-/**
- * @brief Clase en la que se almacena la lista de productos, nº de productos y una tabla con las correspondencias entre palabras y productos.
- */
-class DiccionarioProductos
+class DiccP
 {
 private:
     list<Producto> lista;
@@ -20,12 +17,12 @@ private:
     Arbol * arbol;
     Nodo * raiz;
 public:
-    DiccionarioProductos();
-    ~DiccionarioProductos();
-    void insertar (Producto * nuevo); // DONE
-    void eliminar (unsigned long int id); // DONE
-    void producto (unsigned long int id); // DONE
-    void precios (double min, double max); // DONE
+    DiccP();
+    ~DiccP();
+    void insertar (Producto * nuevo);
+    void eliminar (unsigned long int id);
+    void producto (unsigned long int id);
+    void precios (double min, double max);
     int getContador() { return contador; }
     TablaHash * getTabla() { return &tabla; }
 };
