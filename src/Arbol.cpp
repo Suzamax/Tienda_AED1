@@ -72,7 +72,7 @@ list<Producto*> Arbol::precios(Nodo * r, float min, float max)
         return precios(r->der, min, max);
     else if (r->getPrecio() > max && r->izq != nullptr)
         return precios(r->izq, min, max);
-    else
+    else if (r->getPrecio() >= min && r->getPrecio() <= max)
     {
         list<Producto*>::iterator loops = r->getLista()->begin();
         while (loops != r->getLista()->end())
@@ -84,6 +84,7 @@ list<Producto*> Arbol::precios(Nodo * r, float min, float max)
         if (r->der != nullptr) l->merge(precios(r->der, min, max), Utilidades::Comparador);
         return *l;
     }
+    else return *l;
 }
 
 Nodo * Arbol::RI (Nodo * n)
