@@ -35,19 +35,19 @@ Nodo * Arbol::insertar(Nodo * r, Producto *p)
     int eq = getAltura(r->izq) - getAltura(r->der);
     
     // Rotación doble a la ...
-    if (eq >= 1 && r->izq->getPrecio() < p->getPrecio())
+    if (eq > 1 && r->izq != nullptr && r->izq->getPrecio() < p->getPrecio())
     {
         r->izq = RI(r->izq);
         return RD(r);
     }
     // Rotación simple a la derecha
-    else if(eq >= 1 && r->izq->getPrecio() > p->getPrecio())
+    else if(eq > 1 && r->izq != nullptr && r->izq->getPrecio() > p->getPrecio())
         return RD(r);
     // Rotación simple a la izquierda
-    else if(eq <= -1 && r->der->getPrecio() < p->getPrecio())
+    else if(eq < -1 && r->der != nullptr && r->der->getPrecio() < p->getPrecio())
         return RI(r);
     // Rotación doble a la ...
-    else if(eq <= -1 && r->der->getPrecio() > p->getPrecio())
+    else if(eq < -1 && r->der != nullptr && r->der->getPrecio() > p->getPrecio())
     {
         r->der = RD(r->der);
         return RI(r);
