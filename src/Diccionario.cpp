@@ -3,8 +3,12 @@
 DiccionarioProductos::DiccionarioProductos() {
     arbol = new Arbol();
     raiz = nullptr;
-};
-DiccionarioProductos::~DiccionarioProductos() {};
+}
+
+DiccionarioProductos::~DiccionarioProductos() {
+    delete arbol;
+    delete raiz;
+}
 
 /**
  * @brief Método para insertar un producto dado en el diccionario. También ordena la lista.
